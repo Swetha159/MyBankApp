@@ -1,0 +1,110 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #141e30,#000040);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 40%;
+    backdrop-filter: blur(10px);
+}
+
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.bank-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+}
+
+.label_name {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.input-field, .select-field{
+    width: 90%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 16px;
+}
+.select-field{
+	width:95%
+}
+.text-area
+{
+	width:97%;
+	background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 16px;
+     border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.input-field::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.nav-btn {
+    background: white;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+    background:white;
+}
+.row {
+    display: flex;
+    gap: 0px; 
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1;
+    min-width: 200px;
+    margin: 0; 
+    padding: 0; 
+}
