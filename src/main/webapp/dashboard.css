@@ -3,6 +3,7 @@ body {
     background-color: #f5f6fa;
     margin: 0;
     padding: 20px;
+    
 }
 
 table {
@@ -10,37 +11,38 @@ table {
     border-collapse: collapse;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 th, td {
     padding: 12px 15px;
-    text-align: center;
+    border:none;
     border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #2c3e50;
+    background-color: #97144d;
     color: #fff;
     font-weight: bold;
-    text-transform: uppercase;
+    text-align:left;
+    
 }
 
 td {
     color: #333;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: #f8f9fa;
-}
+} */
 
 tr:hover {
     background-color: #ecf0f1;
+    box-shadow: inset 0 -1px 0 0 rgba(100,121,143,0.12);
     transition: 0.3s;
 }
-
-a {
+/* 
+.action-button{
     text-decoration: none;
     color: #e74c3c;
     font-weight: bold;
@@ -50,20 +52,67 @@ a {
     transition: 0.3s;
 }
 
-a:hover {
+.action-button:hover {
     background-color: #e74c3c;
     color: white;
-}
+    
+    
+} */
  .add-account-btn {
     padding: 10px 15px;
-    background-color: #042460;
+    width:10%;
+    background-color: #97144d;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
+    font-size :20px;
 }
 
 .add-account-btn:hover {
-    background-color: #99c1f1;
+    background-color: white;
+    border: 1px  solid  #97144d ;
+    color:  #97144d;
 }
+
+.action-button {
+  background-color: #97144d;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+
+.action-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.action-button:hover::after,
+.action-button:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+

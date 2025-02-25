@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.bank.utility.Util;
 
 @WebServlet("/register")
 public class Register extends HttpServlet {
@@ -82,6 +85,20 @@ public class Register extends HttpServlet {
 		String maritalStatus = request.getParameter("marital");
 		String nominee = request.getParameter("nominee");
 		String relationship = request.getParameter("relationship");
+		  Map<String, String> errors = Util.validateForm(
+	                name, gender, email, dob, phoneNumber, occupation, accountType,
+	                address, city, state, zip, nationality, aadhaar, pan, income,
+	                maritalStatus, nominee, relationship
+	        );
+
+	        // If errors exist, forward back to the form with error messages
+	        if (!errors.isEmpty()) {
+	            request.setAttribute("errors", errors);
+	            request.getRequestDispatcher("error.jsp").forward(request, response);
+	            return;
+	        }
+
+		
 		if ("add".equals(flag)) {
 			String sql = "INSERT INTO user_accounts (name, gender, email, dob, phone_number, occupation, account_type, debit_card, credit_card, net_banking, address, city, state, zip, nationality, aadhaar, pan, income, marital_status, nominee, relationship) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -184,12 +201,13 @@ public class Register extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//HttpSession session = request.getSession();
+		System.out.println("vanthuten");
 		String mode = (String) request.getAttribute("mode");
+		
+		  if (mode == null) { mode = request.getParameter("mode"); }
+		 
 		if (mode == null) {
-			mode = request.getParameter("mode");
-		}
-		if (mode == null) {
-			mode = "default"; 
+			mode = "delete"; 
 		}
 		if (mode.equals("user")) {
 
@@ -234,7 +252,7 @@ public class Register extends HttpServlet {
 					  request.setAttribute("relationship", rs.getString("relationship"));
 					 
 				}
-
+				System.out.println("Vareennnnn");
 				request.getRequestDispatcher("form.jsp").forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -283,7 +301,7 @@ public class Register extends HttpServlet {
 			}
 
 			request.setAttribute("userList", userList);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 
 		} else {

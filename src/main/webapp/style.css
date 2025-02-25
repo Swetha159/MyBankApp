@@ -1,8 +1,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #141e30,#000040);
-    color: #ffffff;
+    background:  #f3f3f3;
+    color: #97144d;
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.1);
+    background: #ffffff;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -25,6 +25,8 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    margin-top:20px;
+   
 }
 
 .bank-form {
@@ -51,10 +53,10 @@ body {
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
-    border: none;
+     border: 1px solid #ccc;
     outline: none;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: #ffffff;
+    color: #000;
     font-size: 16px;
 }
 .select-field{
@@ -72,7 +74,7 @@ body {
 }
 
 .input-field::placeholder, textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color:#CAC4D0;
 }
 
 .form-navigation {
@@ -82,8 +84,8 @@ body {
 }
 
 .nav-btn {
-    background: white;
-    color: #000;
+    background:#97144d;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     padding: 10px 20px;
@@ -95,6 +97,8 @@ body {
 
 .nav-btn:hover {
     background:white;
+    color :#97144d;
+    border:1px solid #97144d;
 }
 .row {
     display: flex;
@@ -108,3 +112,14 @@ body {
     margin: 0; 
     padding: 0; 
 }
+
+label[for]:has(+ select[required])::after ,label[for]:has(+ textarea[required])::after, label[for]:has(+ input[required])::after{
+    content: " *";
+    color: red;
+}
+
+label[for="gender"]::after {
+    content: " *";
+    color: red;
+}
+        

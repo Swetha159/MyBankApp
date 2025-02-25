@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>User Accounts</h2>
-	<button onclick="window.location.href='index.jsp'" class="add-account-btn">Add Account</button>
+	<button onclick="window.location.href='dashboard.jsp'" class="add-account-btn">Add Account</button>
 	
     <% 
         List<User> userList = (List<User>) request.getAttribute("userList");
