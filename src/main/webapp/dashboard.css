@@ -1,6 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f5f6fa;
+    
     margin: 0;
     padding: 20px;
     
@@ -11,11 +12,13 @@ table {
     border-collapse: collapse;
     background-color: #fff;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
+    border:none;
 }
 
 th, td {
     padding: 12px 15px;
+    padding-right:-10px;
     border:none;
     border-bottom: 1px solid #ddd;
 }
@@ -25,7 +28,6 @@ th {
     color: #fff;
     font-weight: bold;
     text-align:left;
-    
 }
 
 td {
@@ -41,6 +43,11 @@ tr:hover {
     box-shadow: inset 0 -1px 0 0 rgba(100,121,143,0.12);
     transition: 0.3s;
 }
+/* tr:hover .action-container {
+  opacity: 1;
+  display:contents;
+  
+} */
 /* 
 .action-button{
     text-decoration: none;
@@ -59,8 +66,9 @@ tr:hover {
     
 } */
  .add-account-btn {
-    padding: 10px 15px;
-    width:10%;
+    padding: 10px 10px;
+    margin-top:50px;
+    width:5%;
     background-color: #97144d;
     color: white;
     border: none;
@@ -68,12 +76,35 @@ tr:hover {
     cursor: pointer;
     margin-bottom: 10px;
     font-size :20px;
+    float:right;
 }
 
 .add-account-btn:hover {
     background-color: white;
     border: 1px  solid  #97144d ;
     color:  #97144d;
+}
+.add-account-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.add-account-btn:hover::after,
+.add-account-btn:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 .action-button {
@@ -115,4 +146,70 @@ tr:hover {
   opacity: 1;
   visibility: visible;
 }
+
+.action-column {
+    position: relative; 
+    align-items: center;
+}
+
+.pan-number {
+    flex: 1;
+}
+
+.action-container {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+tr:hover .action-container {
+    opacity: 1;
+    visibility: visible;
+}
+.banner
+{
+	display:flex;
+
+  height: 56px;
+  background-color:#fff;
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  color : white;
+  padding-top : 10px;
+	
+	background:#97144d;
+} 
+.banner{ display: flex; 
+    align-items: center; 
+  
+   background:#97144d; 
+    color: white; 
+    padding: 0px;
+    
+
+}
+.bank-logo {
+    width: 50px; 
+    height: auto; 
+    margin-right: 15px; 
+}
+
+#bank-name {
+    margin: 0; 
+    margin-bottom: 0;
+    font-size: 2rem; 
+    font-weight: bold; 
+    letter-spacing: 2px; 
+}
+
 

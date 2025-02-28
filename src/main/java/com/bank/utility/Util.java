@@ -8,41 +8,17 @@ import java.util.regex.Pattern;
 
 public class Util {
 
-    public static Map<String, String> validateForm(
-            String name, String gender, String email, String dob, String phoneNumber,
-            String occupation, String accountType, String address, String city, String state,
-            String zip, String nationality, String aadhaar, String pan, String income,
-            String maritalStatus, String nominee, String relationship) {
-
-        Map<String, String> errors = new HashMap<>();
-
-        if (!isValidName(name)) errors.put("name", "Invalid name");
-        if (!isValidGender(gender)) errors.put("gender", "Invalid gender");
-        if (!isValidEmail(email)) errors.put("email", "Invalid email format");
-        if (!isValidDOB(dob)) errors.put("dob", "Invalid date of birth format");
-        if (!isValidPhoneNumber(phoneNumber)) errors.put("phoneNumber", "Invalid phone number");
-        if (!isValidOccupation(occupation)) errors.put("occupation", "Invalid occupation");
-        if (!isValidAccountType(accountType)) errors.put("accountType", "Invalid account type");
-        if (!isValidAddress(address)) errors.put("address", "Invalid address");
-        if (!isValidCity(city)) errors.put("city", "Invalid city");
-        if (!isValidState(state)) errors.put("state", "Invalid state");
-        if (!isValidZip(zip)) errors.put("zip", "Invalid zip code");
-        if (!isValidNationality(nationality)) errors.put("nationality", "Invalid nationality");
-        if (!isValidAadhaar(aadhaar)) errors.put("aadhaar", "Invalid Aadhaar number");
-        if (!isValidPan(pan)) errors.put("pan", "Invalid PAN number");
-        if (!isValidIncome(income)) errors.put("income", "Invalid income");
-        if (!isValidMaritalStatus(maritalStatus)) errors.put("maritalStatus", "Invalid marital status");
-        if (!isValidNominee(nominee)) errors.put("nominee", "Invalid nominee name");
-        if (!isValidRelationship(relationship)) errors.put("relationship", "Invalid relationship");
-
-        return errors;  
-    }
 	public static boolean isValidName(String name) {
-		return name != null ;
+		if (name == null || name.trim().isEmpty()) {
+			return false;
+		}
+
+		String nameRegex = "^[A-Za-z][A-Za-z .']*$";
+		return Pattern.matches(nameRegex, name);
 	}
 
 	public static boolean isValidGender(String gender) {
-		if (gender == null) {
+		if (gender == null || gender.trim().isEmpty()) {
 			return false;
 		}
 		String lowerGender = gender.trim().toLowerCase();
@@ -50,7 +26,7 @@ public class Util {
 	}
 
 	public static boolean isValidEmail(String email) {
-		if (email == null) {
+		if (email == null || email.trim().isEmpty()) {
 			return false;
 		}
 		String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
@@ -58,7 +34,7 @@ public class Util {
 	}
 
 	public static boolean isValidDOB(String dob) {
-		if (dob == null) {
+		if (dob == null || dob.trim().isEmpty()) {
 			return false;
 		}
 		try {
@@ -70,18 +46,22 @@ public class Util {
 	}
 
 	public static boolean isValidPhoneNumber(String phoneNumber) {
-		if (phoneNumber == null) {
+		if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
 			return false;
 		}
 		return phoneNumber.matches("\\d{10}");
 	}
 
 	public static boolean isValidOccupation(String occupation) {
-		return occupation != null && !occupation.trim().isEmpty();
+		if (occupation == null || occupation.trim().isEmpty()) {
+			return false;
+		}
+
+		return occupation.matches("^[A-Za-z\\s-]+$");
 	}
 
 	public static boolean isValidAccountType(String accountType) {
-		if (accountType == null) {
+		if (accountType == null || accountType.trim().isEmpty()) {
 			return false;
 		}
 		String lowerAccountType = accountType.trim().toLowerCase();
@@ -89,52 +69,75 @@ public class Util {
 				|| lowerAccountType.equals("fixed");
 	}
 
+	public static boolean isValidDebitCard(String debitCard) {
+		if (debitCard == null || debitCard.trim().isEmpty()) {
+			return false;
+		}
+
+		String lowerAccountType = debitCard.trim().toLowerCase();
+		return lowerAccountType.equals("visa") || lowerAccountType.equals("master") || lowerAccountType.equals("rupay");
+
+	}
+
 	public static boolean isValidAddress(String address) {
-		return address != null && !address.trim().isEmpty();
+		if (address == null || address.trim().isEmpty()) {
+			return false;
+		}
+		return address.matches("^[A-Za-z0-9\\s,./():-]+$");
 	}
 
 	public static boolean isValidCity(String city) {
-		return city != null && !city.trim().isEmpty();
+		if (city == null || city.trim().isEmpty()) {
+			return false;
+		}
+		return city.matches("^[A-Za-z\\s-]+$");
 	}
 
 	public static boolean isValidState(String state) {
-		return state != null && !state.trim().isEmpty();
+		if (state == null || state.trim().isEmpty()) {
+			return false;
+		}
+		return state.matches("^[A-Za-z\\s-]+$");
 	}
 
 	public static boolean isValidZip(String zip) {
-		if (zip == null) {
+		if (zip == null || zip.trim().isEmpty()) {
 			return false;
 		}
 		return zip.matches("\\d{5,6}");
 	}
 
 	public static boolean isValidNationality(String nationality) {
-		return nationality != null && !nationality.trim().isEmpty();
+		if (nationality == null || nationality.trim().isEmpty()) {
+			return false;
+		}
+		return nationality.matches("^[A-Za-z\\s-]+$");
+
 	}
 
 	public static boolean isValidAadhaar(String aadhaar) {
-		if (aadhaar == null) {
+		if (aadhaar == null || aadhaar.trim().isEmpty()) {
 			return false;
 		}
 		return aadhaar.matches("\\d{12}");
 	}
 
 	public static boolean isValidPan(String pan) {
-		if (pan == null) {
+		if (pan == null || pan.trim().isEmpty()) {
 			return false;
 		}
 		return pan.matches("[A-Z]{5}[0-9]{4}[A-Z]");
 	}
 
 	public static boolean isValidIncome(String income) {
-		if (income == null) {
+		if (income == null || income.trim().isEmpty()) {
 			return false;
 		}
 		return true;
 	}
 
 	public static boolean isValidMaritalStatus(String maritalStatus) {
-		if (maritalStatus == null) {
+		if (maritalStatus == null || maritalStatus.trim().isEmpty()) {
 			return false;
 		}
 		String lowerStatus = maritalStatus.trim().toLowerCase();
@@ -143,10 +146,18 @@ public class Util {
 	}
 
 	public static boolean isValidNominee(String nominee) {
-		return nominee != null || nominee.trim().isEmpty() ;
+		if (nominee == null || nominee.trim().isEmpty()) {
+			return false;
+		}
+		String nomineeRegex = "^[A-Za-z][A-Za-z .']*$";
+		return Pattern.matches(nomineeRegex, nominee);
 	}
 
 	public static boolean isValidRelationship(String relationship) {
-		return relationship != null || relationship.trim().isEmpty() ;
+		if (relationship == null || relationship.trim().isEmpty()) {
+			return false;
+		}
+		return relationship.matches("^[A-Za-z\\s-]+$");
 	}
+
 }

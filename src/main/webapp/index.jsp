@@ -8,19 +8,27 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <script>
-	window.onload = function() {
-		if (!window.location.href.includes("mode=showall")) {
-			window.location.href = "register?mode=showall";
-		}
-	};
+	
 </script>
 
 </head>
 <body>
-	<h2>ADMIN</h2>
+	<header class="banner">
+		<img src="images/ftlogowhite.png" alt="Bank Logo" class="bank-logo">
+
+		<h1 id="bank-name">FINTRUST BANK</h1>
+
+	</header>
+<% String errorMessage = (String) request.getAttribute("error"); %>
+<% if (errorMessage != null) { %>
+    <div style="color: red; font-weight: bold;">
+        <%= errorMessage %>
+    </div>
+<% } %>
+
 	<button onclick="window.location.href='insert.jsp'"
-		class="add-account-btn">
-		<i class="fa fa-plus"></i>
+		data-tooltip="Add account" class="add-account-btn">
+	  Add Account</i>
 	</button>
 
 
@@ -32,6 +40,7 @@
 
 	<table border="1">
 		<tr>
+			<th>Id</th>
 			<th>Name</th>
 			<!--  <th>Gender</th> -->
 			<th>Email</th>
@@ -53,13 +62,14 @@
             <th>Marital Status</th>
             <th>Nominee</th>
             <th>Relationship</th> -->
-		
+
 		</tr>
 
 		<%
 		for (User user : userList) {
 		%>
 		<tr>
+			<td><%=user.getId()%></td>
 			<td><%=user.getName()%></td>
 			<%--  <td><%= user.getGender() %></td> --%>
 			<td><%=user.getEmail()%></td>
@@ -76,36 +86,37 @@
             <td><%= user.getZip() %></td>
             <td><%= user.getNationality() %></td> --%>
 			<td><%=user.getAadhaar()%></td>
-			<td><%=user.getPan()%></td>
+			<td class="action-column"><span class="pan-number"><%=user.getPan()%></span>
+				<div class="action-container">
+
+					<button class="action-button" data-tooltip="update"
+						onclick="window.location.href='register?flag=update&id=<%=user.getId()%>&mode=user'">
+						<i class="fa fa-edit"></i>
+					</button>
+					<button class="action-button" data-tooltip="delete"
+						onclick="window.location.href='register?flag=delete&id=<%=user.getId()%>&mode=delete'">
+						<i class="fa fa-trash"></i>
+					</button>
+				</div></td>
 			<%--   <td><%= user.getIncome() %></td>
             <td><%= user.getMaritalStatus() %></td>
             <td><%= user.getNominee() %></td>
             <td><%= user.getRelationship() %></td> --%>
-			<td>
-				<button class="action-button" data-tooltip="update"
-					onclick="window.location.href='register?flag=update&id=<%=user.getId()%>&mode=user'">
-					<i class="fa fa-edit"></i>
-				</button>
-			</td>
 
-			<td>
-				<button class="action-button" data-tooltip="delete"
-					onclick="window.location.href='register?flag=delete&id=<%=user.getId()%>'">
-					<i class="fa fa-trash"></i>
-				</button>
-			</td>
 
 
 		</tr>
+
 		<%
 		}
 		%>
+
 	</table>
 
 	<%
 	} else {
 	%>
-	<p>Welcome to Admin Page</p>
+	<h2>Welcome to Admin Page</h2>
 	<%
 	}
 	%>

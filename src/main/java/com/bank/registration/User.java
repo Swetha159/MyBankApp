@@ -3,10 +3,9 @@ package com.bank.registration;
 public class User {
 	private int id;
 	private String name, gender, email, dob, phoneNumber, occupation, accountType, address, city, state, zip,
-			nationality, aadhaar, pan, income, maritalStatus, nominee, relationship;
-	private boolean debitCard, creditCard, netBanking;
-
-	// Getters and Setters
+			nationality, aadhaar, pan, income, maritalStatus, nominee, relationship,debitCard;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -71,29 +70,15 @@ public class User {
 		this.accountType = accountType;
 	}
 
-	public boolean isDebitCard() {
+	public String getDebitCard() {
 		return debitCard;
 	}
 
-	public void setDebitCard(boolean debitCard) {
+	public void setDebitCard(String debitCard) {
 		this.debitCard = debitCard;
 	}
 
-	public boolean isCreditCard() {
-		return creditCard;
-	}
-
-	public void setCreditCard(boolean creditCard) {
-		this.creditCard = creditCard;
-	}
-
-	public boolean isNetBanking() {
-		return netBanking;
-	}
-
-	public void setNetBanking(boolean netBanking) {
-		this.netBanking = netBanking;
-	}
+	
 
 	public String getAddress() {
 		return address;

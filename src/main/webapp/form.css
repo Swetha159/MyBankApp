@@ -61,7 +61,7 @@ h2 {
     width: 100%;
     padding-right: 0px;
 	  height :50px;
-    border: 2px solid #042460;
+    border: 2px solid #97144d;
     border-radius: 6px;
     font-size: 20px;
 }
@@ -70,12 +70,12 @@ h2 {
     width: 100%;
     padding-right: 0px;
     height :50px;
-    border: 2px solid #042460;
+    border: 2px solid #97144d;
     border-radius: 6px;
     font-size: 20px;
 }
 .submit-btn {
-    background: #042460;
+    background: #97144d;
     color: white;
     border: none;
     width: 100%;
@@ -91,8 +91,10 @@ h2 {
 }
 
 .submit-btn:hover {
-    background: #0057b3;
-    box-shadow: 0px 4px 12px rgba(0, 114, 255, 0.3);
+    background: #fff;
+    border: 1px  solid  #97144d ;
+    color:#97144d;
+    
 }
 .row {
     display: flex;
@@ -104,3 +106,113 @@ h2 {
     flex: 1;
     min-width: 200px;
 }
+
+.banner
+{
+	display:flex;
+
+  height: 56px;
+  background-color:#fff;
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  color : white;
+  padding-top : 10px;
+	
+	background:#97144d;
+} 
+
+.error-box {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background: white; 
+	color: #d8000c; 
+	border: 1px solid #d8000c;
+	padding: 15px;
+	width: 30%;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+}
+
+
+.error-box button {
+	background-color: #d8000c;
+	color: white;
+	border: none;
+	padding: 8px 15px;
+	cursor: pointer;
+	margin-top: 10px;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.error-box button:hover {
+	background-color: #a50000;
+}
+
+.form-title
+{
+	color: #97144d ;
+}
+
+.container {
+	background: #ffffff;
+	padding: 30px;
+	margin-top:150px;
+	
+	border-radius: 15px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+	width: 70%;
+	backdrop-filter: blur(10px);
+}
+.banner
+{
+	display:flex;
+
+  height: 56px;
+  background-color:#fff;
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  color : white;
+  padding-top : 10px;
+	
+	background:#97144d;
+} 
+.banner{ display: flex; 
+    align-items: center; 
+  
+   background:#97144d; 
+    color: white; 
+    padding: 0px;
+    
+
+}
+.bank-logo {
+    width: 50px; /* Adjust logo size */
+    height: auto; /* Keeps aspect ratio */
+    margin-right: 15px; /* Space between logo and text */
+}
+
+#bank-name {
+    margin: 0; 
+    margin-bottom: 0;
+    font-size: 2rem; 
+    font-weight: bold; 
+    letter-spacing: 2px; 
+}
+
+
+
