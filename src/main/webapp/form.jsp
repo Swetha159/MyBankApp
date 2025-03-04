@@ -15,6 +15,7 @@ int id = 0;
 boolean isUpdating = false;
 
 if (user != null) {
+	System.out.println("hjsgdhf");
 	isUpdating = true;
 	id = user.getId();
 	name = user.getName();
@@ -62,12 +63,8 @@ if (user != null) {
 
 </head>
 <body>
-	<header class="banner">
-		<img src="images/ftlogowhite.png" alt="Bank Logo" class="bank-logo">
+		<jsp:include page="header/header.jsp" />
 
-		<h1 id="bank-name">FINTRUST BANK</h1>
-
-	</header>
 	<%
 	Map<String, String> errors = (Map<String, String>) request.getAttribute("errors");
 

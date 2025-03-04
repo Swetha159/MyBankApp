@@ -153,8 +153,8 @@ label[for="gender"]::after {
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	background: white; /* Light red background */
-	color: #d8000c; /* Dark red text */
+	background: white; 
+	color: #d8000c;
 	border: 1px solid #d8000c;
 	padding: 15px;
 	width: 30%;

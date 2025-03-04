@@ -6,8 +6,55 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import com.bank.registration.User;
+
 public class Util {
 
+	public static Map<String,String> validateRegisterForm(User user,Map<String,String> errors)
+	{
+		if (!Util.isValidName(user.getName()))
+			errors.put("name", "Invalid name");
+		if (!Util.isValidGender(user.getGender()))
+			errors.put("gender", "Invalid gender");
+		if (!Util.isValidEmail(user.getEmail()))
+			errors.put("email", "Invalid email format");
+		if (!Util.isValidDOB(user.getDob()))
+			errors.put("dob", "Invalid date of birth format");
+		if (!Util.isValidPhoneNumber(user.getPhoneNumber()))
+			errors.put("phoneNumber", "Invalid phone number");
+		if (!Util.isValidOccupation(user.getOccupation()))
+			errors.put("occupation", "Invalid occupation");
+		if (!Util.isValidAccountType(user.getAccountType()))
+			errors.put("accountType", "Invalid account type");
+		if (!Util.isValidDebitCard(user.getDebitCard()))
+			errors.put("debitCard", "Invalid debitCard");
+		if (!Util.isValidAddress(user.getAddress()))
+			errors.put("address", "Invalid address");
+		if (!Util.isValidCity(user.getCity()))
+			errors.put("city", "Invalid city");
+		if (!Util.isValidState(user.getState()))
+			errors.put("state", "Invalid state");
+		if (!Util.isValidZip(user.getZip()))
+			errors.put("zip", "Invalid zip code");
+		if (!Util.isValidNationality(user.getNationality()))
+			errors.put("nationality", "Invalid nationality");
+		if (!Util.isValidAadhaar(user.getAadhaar()))
+			errors.put("aadhaar", "Invalid Aadhaar number");
+		if (!Util.isValidPan(user.getPan()))
+			errors.put("pan", "Invalid PAN number");
+		if (!Util.isValidIncome(user.getIncome()))
+			errors.put("income", "Invalid income");
+		if (!Util.isValidMaritalStatus(user.getMaritalStatus()))
+			errors.put("maritalStatus", "Invalid marital status");
+		if (!Util.isValidNominee(user.getNominee()))
+			errors.put("nominee", "Invalid nominee name");
+		if (!Util.isValidRelationship(user.getRelationship()))
+			errors.put("relationship", "Invalid relationship");
+		
+		return errors;
+	}
+	
+	
 	public static boolean isValidName(String name) {
 		if (name == null || name.trim().isEmpty()) {
 			return false;

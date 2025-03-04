@@ -1,5 +1,6 @@
 <%@ page import="java.util.List, com.bank.registration.User"%>
 
+<%@ page import="java.util.Map"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,25 +8,36 @@
 <link href="dashboard.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<script>
-	
-</script>
 
 </head>
 <body>
-	<header class="banner">
-		<img src="images/ftlogowhite.png" alt="Bank Logo" class="bank-logo">
+		<jsp:include page="header/header.jsp" />
 
-		<h1 id="bank-name">FINTRUST BANK</h1>
+<%
+	Map<String, String> errors = (Map<String, String>) request.getAttribute("errors");
 
-	</header>
-<% String errorMessage = (String) request.getAttribute("error"); %>
-<% if (errorMessage != null) { %>
-    <div style="color: red; font-weight: bold;">
-        <%= errorMessage %>
-    </div>
-<% } %>
+	if (errors != null && !errors.isEmpty()) {
+		StringBuilder errorMessages = new StringBuilder();
+		for (Map.Entry<String, String> entry : errors.entrySet()) {
+			errorMessages.append(entry.getKey()).append(": ").append(entry.getValue()).append("<br>");
+		}
+	%>
+	<div id="errorAlert" class="error-box">
+		<p><%=errorMessages.toString()%></p>
+		<button onclick="closeAlert()">OK</button>
+	</div>
 
+	<script>
+		function closeAlert() {
+			document.getElementById("errorAlert").style.display = "none";
+		}
+	</script>
+
+
+	<%
+	request.removeAttribute("errors");
+	}
+	%>
 	<button onclick="window.location.href='insert.jsp'"
 		data-tooltip="Add account" class="add-account-btn">
 	  Add Account</i>
@@ -116,7 +128,7 @@
 	<%
 	} else {
 	%>
-	<h2>Welcome to Admin Page</h2>
+	<h2 id = "welcome">Welcome to Admin Page</h2>
 	<%
 	}
 	%>

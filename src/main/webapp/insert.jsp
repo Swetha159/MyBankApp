@@ -28,19 +28,15 @@
 
 </head>
 <body>
-	<header class="banner">
-		<img src="images/ftlogowhite.png" alt="Bank Logo" class="bank-logo">
+	<jsp:include page="header/header.jsp" />
 
-		<h1 id="bank-name">FINTRUST BANK</h1>
-
-	</header>
 	<%
 	Map<String, String> errors = (Map<String, String>) request.getAttribute("errors");
 
 	if (errors != null && !errors.isEmpty()) {
 		StringBuilder errorMessages = new StringBuilder();
 		for (Map.Entry<String, String> entry : errors.entrySet()) {
-			errorMessages.append(entry.getKey()).append(": ").append(entry.getValue()).append("<br>"); // Line break for better readability
+			errorMessages.append(entry.getKey()).append(": ").append(entry.getValue()).append("<br>");
 		}
 	%>
 	<div id="errorAlert" class="error-box">
